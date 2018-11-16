@@ -1173,7 +1173,7 @@ class LdapConnection {
   /// If [newSuperior] is not null, re-parent the entry.
   ///
   Future<LdapResult> modifyDN(String dn, String rdn,
-      {bool deleteOldRDN = true, String newSuperior}) async {
+      {bool deleteOldRDN: true, String newSuperior}) async {
     loggerConnection.fine("modifyDN");
     await _requireReady();
     return await _cmgr
