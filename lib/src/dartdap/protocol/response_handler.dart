@@ -10,26 +10,26 @@ abstract class ResponseHandler {
 
     switch (m.protocolOp.tag) {
       case BIND_RESPONSE:
-        return BindResponse(m);
+        return new BindResponse(m);
 
       case SEARCH_RESULT_ENTRY:
-        return SearchResultEntry(m);
+        return new SearchResultEntry(m);
 
       case SEARCH_RESULT_REFERENCE:
-        return SearchResultEntry.referral(m);
+        return new SearchResultEntry.referral(m);
 
       case SEARCH_RESULT_DONE:
-        return SearchResultDone(m);
+        return new SearchResultDone(m);
 
       case EXTENDED_RESPONSE:
-        return ExtendedResponse(m);
+        return new ExtendedResponse(m);
 
       case ADD_RESPONSE:
       case DELETE_RESPONSE:
       case MODIFY_RESPONSE:
       case MODIFY_DN_RESPONSE:
       case COMPARE_RESPONSE:
-        return GenericResponse(m);
+        return new GenericResponse(m);
 
       default:
         throw "Not done";

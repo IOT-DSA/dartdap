@@ -77,7 +77,7 @@ class _StreamPendingOp extends _PendingOp {
 // A pending opertion that expects a single return response message
 // returned via a future. For all LDAP ops except search results
 class _FuturePendingOp extends _PendingOp {
-  var completer = Completer<LdapResult>();
+  var completer = new Completer<LdapResult>();
 
   _FuturePendingOp(LDAPMessage m) : super(m);
 
@@ -193,7 +193,7 @@ class _ConnectionManager {
 
         // FIXME: I think the .cast causes bad performance...
         // https://www.dartlang.org/guides/language/effective-dart/usage#avoid-using-cast
-        _socket.cast<Uint8List>().transform(_createLdapTransformer()).listen(
+        _socket.transform(_createLdapTransformer()).listen(
             (m) => _handleLDAPMessage(m),
             onError: _ldapListenerOnError,
             onDone: _ldapListenerOnDone);

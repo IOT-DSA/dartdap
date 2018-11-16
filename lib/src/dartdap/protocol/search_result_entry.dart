@@ -17,7 +17,7 @@ class SearchResultEntry extends ResponseOp {
     loggeRecvLdap.fine( () => "Search result is a referral");
     var uris = m.protocolOp.elements;
     var l = uris.map( (obj) => (obj as ASN1OctetString).stringValue).toList();
-    _searchEntry = SearchEntry(null,referrals:l);
+    _searchEntry = new SearchEntry(null,referrals:l);
   }
 
   SearchResultEntry(LDAPMessage m) : super.searchEntry() {
