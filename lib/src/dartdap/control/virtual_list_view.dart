@@ -83,12 +83,12 @@ class VLVRequestControl extends Control {
     var s = startSequence();
 
     var seq = new ASN1Sequence();
-    seq.add(new ASN1Integer.fromInt(beforeCount));
-    seq.add(new ASN1Integer.fromInt(afterCount));
+    seq.add(new ASN1Integer(beforeCount));
+    seq.add(new ASN1Integer(afterCount));
     if (hasTargetOffset) {
       var s = new ASN1Sequence(tag: TYPE_TARGET_BYOFFSET);
-      s.add(new ASN1Integer.fromInt(offset));
-      s.add(new ASN1Integer.fromInt(contentCount));
+      s.add(new ASN1Integer(offset));
+      s.add(new ASN1Integer(contentCount));
       seq.add(s);
     } else {
       _clogger.finest("VLV request Assertion value = $assertionValue");
